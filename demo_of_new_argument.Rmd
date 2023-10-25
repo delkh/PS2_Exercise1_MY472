@@ -1,0 +1,34 @@
+---
+title: "demo_of_new_argument"
+output: html_document
+date: "2023-10-25"
+---
+
+The function "somefunction" takes 2 arguments, depending on the value of the argument operation, it will either calculate the mean age column or the sum of the age column. 
+
+```{r}
+suppressMessages(library(tidyverse))
+data('Orange')
+
+somefunction <- function(data, operation) {
+  data <- data.frame(data)
+  if (operation == 1) {
+    result <- mean(data$age)
+  } else if (operation == 2) {
+    result <- sum(data$age)
+  } else {
+    result <- NULL
+  }
+  return(result)
+}
+
+# Call the function with operation 1 to calculate the mean
+mean_result <- somefunction(Orange, 1)
+cat("Mean Age:", mean_result, "\n")
+
+# Call the function with operation 2 to calculate the sum
+sum_result <- somefunction(Orange, 2)
+cat("Sum of Ages:", sum_result, "\n")
+
+```
+
